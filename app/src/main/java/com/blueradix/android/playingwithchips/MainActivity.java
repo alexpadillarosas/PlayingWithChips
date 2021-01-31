@@ -1,20 +1,18 @@
 package com.blueradix.android.playingwithchips;
 
 import android.os.Bundle;
-
-import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipGroup;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.CompoundButton;
-import android.widget.Toast;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        listOfCheckedDragons = new ArrayList<Dragon>();
+        listOfCheckedDragons = new ArrayList<>();
         filteredChipGroup = findViewById(R.id.filtered_chip_group);
 
 
@@ -102,7 +100,14 @@ public class MainActivity extends AppCompatActivity {
         listOfFilteredDragons = new ArrayList<>();
         filterChipGroup = findViewById(R.id.filter_chip_group);
 
-        listOfDragonsFilter = new ArrayList(Arrays.asList("Stoker", "Boulder", "Fear", "Sharp", "Tidal", "Mystery", "Strike"));
+        listOfDragonsFilter = new ArrayList<>();
+        listOfDragonsFilter.add("Stoker");
+        listOfDragonsFilter.add("Boulder");
+        listOfDragonsFilter.add("Fear");
+        listOfDragonsFilter.add("Sharp");
+        listOfDragonsFilter.add("Tidal");
+        listOfDragonsFilter.add("Mystery");
+        listOfDragonsFilter.add("Strike");
 
         for (final String dragonType : listOfDragonsFilter){
             final Chip chip = new Chip(this);
@@ -156,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Dragon> populateDragons(){
-        List<Dragon> list = new ArrayList<Dragon>();
+        List<Dragon> list = new ArrayList<>();
         list.add(new Dragon("Night Fury", 1, "Strike"));
         list.add(new Dragon("Stormfly", 11, "Fear"));
         list.add(new Dragon("Boneknapper", 3, "Mystery"));
@@ -245,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showSelectedChips(View view) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (final Dragon dragon : listOfCheckedDragons){
 
             sb.append(dragon.getName()).append("-").append(dragon.getId()).append(" / ");
