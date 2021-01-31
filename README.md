@@ -1,13 +1,13 @@
 # PlayingWithChips
 This projects shows a variety of ways to use chips:
 
-XML Chips
-Choice Chips
-Horizontally Scrollable Chips
-Action Chips
-Removable Chips
-Checked Chips
-Filter Chips
+* XML Chips
+* Choice Chips
+* Horizontally Scrollable Chips
+* Action Chips
+* Removable Chips
+* Checked Chips
+* Filter Chips
 
 1             |  2
 :-------------------------:|:-------------------------:
