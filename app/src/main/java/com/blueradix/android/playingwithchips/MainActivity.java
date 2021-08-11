@@ -5,6 +5,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +16,6 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ChipGroup filterChipGroup;
     private ChipGroup filteredChipGroup;
     private ChipGroup horizontalChipGroup;
-
+    private Switch messageSwitch;
 
     //http://www.schoolofdragons.com/how-to-train-your-dragon/screenshots-gallery/dragon-pictures
 
@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
         listOfCheckedDragons = new ArrayList<>();
         filteredChipGroup = findViewById(R.id.filtered_chip_group);
@@ -71,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
         rock.setOnClickListener(onClickListener);
         paper.setOnClickListener(onClickListener);
         scissor.setOnClickListener(onClickListener);
+
+        messageSwitch = findViewById(R.id.messageSwitch);
+
 
     }
 
@@ -146,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     private void removeChipsFromFilteredList(String type) {
 
         for( int i = filteredChipGroup.getChildCount() - 1 ; i >= 0 ; i-- ){
@@ -197,6 +199,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void addChipsProgrammaticallyToCheckChipsList() {
         chipGroup1 = findViewById(R.id.checked_chip_group);
+        //when the switch is on everytime you check a chip, it will display a message.
+//        messageSwitch = findViewById(R.id.messageSwitch);
 
         listOfDragonsToCheck =  populateDragons();
 
@@ -215,12 +219,16 @@ public class MainActivity extends AppCompatActivity {
 
                     if(isChecked){
                         listOfCheckedDragons.add(dragon);
+                        if(messageSwitch.isChecked()) {
+                            Snackbar.make(buttonView.getRootView(), dragon.getName() + " : you clicked me!", Snackbar.LENGTH_LONG).show();
+                        }
                     }else{
                         listOfCheckedDragons.remove(dragon);
                     }
+
+
                 }
             });
-
 
             chipGroup1.addView(chip);
         }
