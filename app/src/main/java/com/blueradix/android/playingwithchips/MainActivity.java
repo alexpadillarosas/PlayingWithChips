@@ -9,7 +9,6 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -31,17 +30,17 @@ public class MainActivity extends AppCompatActivity {
     private ChipGroup filteredChipGroup;
     private ChipGroup horizontalChipGroup;
     private Switch messageSwitch;
+    private ChipGroup programmedActionChipGroup;
+    private List<Sign> listOfSigns;
 
     //http://www.schoolofdragons.com/how-to-train-your-dragon/screenshots-gallery/dragon-pictures
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         listOfCheckedDragons = new ArrayList<>();
         filteredChipGroup = findViewById(R.id.filtered_chip_group);
@@ -72,7 +71,47 @@ public class MainActivity extends AppCompatActivity {
 
         messageSwitch = findViewById(R.id.messageSwitch);
 
+        addChipsProgrammaticallyToActionChipsList();
 
+
+    }
+
+    private void addChipsProgrammaticallyToActionChipsList() {
+        listOfSigns = populateSigns();
+
+        programmedActionChipGroup = findViewById(R.id.programed_action_chip_group);
+
+        for(final Sign sign : listOfSigns){
+            Chip chip = new Chip(this);
+            //The tag property is for us to store things, you can store an object or a key value pair.
+            //we are going to store the whole sign object
+            chip.setTag(sign);
+            chip.setText(sign.getName());
+            chip.setChipIconResource(sign.getImageResourceId());
+
+            chip.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Sign sign = (Sign) chip.getTag();
+                    Snackbar.make(v, "id: " + sign.getId() + " : " + sign.getName(), Snackbar.LENGTH_LONG).show();
+
+                    //here you can open a new Activity if you want.
+
+                }
+            });
+
+            programmedActionChipGroup.addView(chip);
+
+        }
+    }
+
+    private List<Sign> populateSigns(){
+        List<Sign> signs = new ArrayList<>();
+        signs.add(new Sign(1L, "Sun", R.drawable.ic_baseline_wb_sunny_24));
+        signs.add(new Sign(2L, "Eye", R.drawable.ic_baseline_visibility_24));
+        signs.add(new Sign(3L, "Verified", R.drawable.ic_baseline_verified_24));
+
+        return signs;
     }
 
     private void showMessageSnackbar(View v) {
