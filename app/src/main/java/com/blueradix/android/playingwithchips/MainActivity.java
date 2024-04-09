@@ -1,6 +1,5 @@
 package com.blueradix.android.playingwithchips;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -9,14 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
-//import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.blueradix.android.playingwithchips.databinding.ActivityMainBinding;
 import com.google.android.material.chip.Chip;
-//import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -365,35 +362,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    public void showSelectedChips(View view) {
-//        StringBuilder sb = new StringBuilder();
-//        for (final Dragon dragon : listOfCheckedDragons){
-//
-//            sb.append(dragon.getName()).append("-").append(dragon.getId()).append(" / ");
-//
-//        }
-//        Toast.makeText(this, "selected dragons: " + sb, Toast.LENGTH_SHORT).show();
-//    }
-
-//    public void showNonRemovedChips(View view) {
-//        StringBuffer sb = new StringBuffer();
-//
-//        for(Dragon dragon : listOfDragonsToRemove){
-//            sb.append(dragon.getName()).append(" ");
-//        }
-//
-//        Snackbar.make(view, sb, Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show();
-//    }
-
-
-
-
-//    public void restoreRemoveChipList(View view) {
-//        binding.removeChipGroup.removeAllViews();
-//        addChipsProgrammaticallyToRemoveChipsList();
-//
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
