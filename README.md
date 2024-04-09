@@ -1,7 +1,7 @@
 # PlayingWithChips
 This projects shows a variety of ways to use chips:
 
-* XML Chips
+* Entry Chips (type words separated by comma)
 * Choice Chips
 * Horizontally Scrollable Chips
 * Action Chips
