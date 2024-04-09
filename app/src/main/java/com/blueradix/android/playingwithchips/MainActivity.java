@@ -1,36 +1,36 @@
 package com.blueradix.android.playingwithchips;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.Switch;
+//import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blueradix.android.playingwithchips.databinding.ActivityMainBinding;
 import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipGroup;
+//import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding binding;
     private List<Dragon> listOfDragons;
     private List<Dragon> listOfDragonsToRemove;
     private List<Dragon> listOfDragonsToCheck;
     private List<Dragon> listOfCheckedDragons;
     private List<String> listOfDragonsFilter;
     private List<Dragon> listOfFilteredDragons;
-    private ChipGroup chipGroup1;
-    private ChipGroup chipGroup2;
-    private ChipGroup filterChipGroup;
-    private ChipGroup filteredChipGroup;
-    private ChipGroup horizontalChipGroup;
-    private Switch messageSwitch;
-    private ChipGroup programmedActionChipGroup;
+
     private List<Sign> listOfSigns;
 
     //http://www.schoolofdragons.com/how-to-train-your-dragon/screenshots-gallery/dragon-pictures
@@ -38,12 +38,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+
+
 //        Toolbar toolbar = findViewById(R.id.toolbar);
+//        Toolbar toolbar =
 //        setSupportActionBar(toolbar);
 
         listOfCheckedDragons = new ArrayList<>();
-        filteredChipGroup = findViewById(R.id.filtered_chip_group);
 
 
         addChipsProgrammaticallyToRemoveChipsList();
@@ -51,10 +56,6 @@ public class MainActivity extends AppCompatActivity {
         addChipsProgrammaticallyToHorizontalScrollChips();
         addChipsProgrammaticallyToFilterChipsList();
 
-
-        Chip rock = findViewById(R.id.rock_chip);
-        Chip scissor =findViewById(R.id.scissor_chip);
-        Chip paper = findViewById(R.id.paper_chip);
 
         //Create an OnClickListener
         View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -65,21 +66,97 @@ public class MainActivity extends AppCompatActivity {
         };
 
 
-        rock.setOnClickListener(onClickListener);
-        paper.setOnClickListener(onClickListener);
-        scissor.setOnClickListener(onClickListener);
+        binding.rockChip.setOnClickListener(onClickListener);
+        binding.paperChip.setOnClickListener(onClickListener);
+        binding.scissorChip.setOnClickListener(onClickListener);
 
-        messageSwitch = findViewById(R.id.messageSwitch);
 
         addChipsProgrammaticallyToActionChipsList();
 
+        binding.restoreRemovedChipsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.removeChipGroup.removeAllViews();
+                addChipsProgrammaticallyToRemoveChipsList();
+            }
+        });
+
+        binding.showRemovedChipsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StringBuffer sb = new StringBuffer();
+
+                for(Dragon dragon : listOfDragonsToRemove){
+                    sb.append(dragon.getName()).append(" ");
+                }
+
+                Snackbar.make(view, sb, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        binding.showCheckedChipsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StringBuilder sb = new StringBuilder();
+                for (final Dragon dragon : listOfCheckedDragons){
+
+                    sb.append(dragon.getName()).append("-").append(dragon.getId()).append(" / ");
+
+                }
+                Toast.makeText(view.getContext(), "selected dragons: " + sb, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.entryChipEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(!TextUtils.isEmpty(charSequence)){
+                    if(charSequence.length() > 1 && charSequence.charAt(charSequence.length() -1) == ',') {
+                        addChipToGroup(charSequence.toString().replace(",", ""));
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(!TextUtils.isEmpty(editable.toString())){
+                    if(editable.toString().length() == 1 && editable.toString().endsWith(",")){
+                        binding.entryChipEditText.setText("");
+                    }else if(editable.toString().length() > 1 && editable.toString().endsWith(",")){
+                        binding.entryChipEditText.setText("");
+                    }
+
+                }
+            }
+        });
 
     }
 
+    private void addChipToGroup(String text) {
+        Chip chip = new Chip(this);
+        chip.setCloseIconVisible(true);
+        chip.setClickable(true);
+        chip.setText(text);
+
+
+        chip.setOnCloseIconClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.entryChipGroup.removeView(view);
+            }
+        });
+        binding.entryChipGroup.addView(chip);
+    }
+
+
     private void addChipsProgrammaticallyToActionChipsList() {
         listOfSigns = populateSigns();
-
-        programmedActionChipGroup = findViewById(R.id.programed_action_chip_group);
 
         for(final Sign sign : listOfSigns){
             Chip chip = new Chip(this);
@@ -100,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            programmedActionChipGroup.addView(chip);
+            binding.programmedActionChipGroup.addView(chip);
 
         }
     }
@@ -121,8 +198,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void addChipsProgrammaticallyToHorizontalScrollChips() {
 
-        horizontalChipGroup = findViewById(R.id.horizontal_chip_group);
-
         listOfDragons = populateDragons();
 
         for (final Dragon dragon : listOfDragons) {
@@ -131,14 +206,13 @@ public class MainActivity extends AppCompatActivity {
             chip.setTag(dragon.getId());
             chip.setCheckable(true);
 
-            horizontalChipGroup.addView(chip);
+            binding.horizontalChipGroup.addView(chip);
         }
 
     }
 
     private void addChipsProgrammaticallyToFilterChipsList() {
         listOfFilteredDragons = new ArrayList<>();
-        filterChipGroup = findViewById(R.id.filter_chip_group);
 
         listOfDragonsFilter = new ArrayList<>();
         listOfDragonsFilter.add("Stoker");
@@ -165,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
-            filterChipGroup.addView(chip);
+            binding.filterChipGroup.addView(chip);
         }
     }
 
@@ -177,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
                 chip.setText(dragon.getName());
                 //here we are adding the whole dragon object as a tag!!!
                 chip.setTag(dragon);
-                filteredChipGroup.addView(chip);
+                binding.filteredChipGroup.addView(chip);
 
                 listOfFilteredDragons.add(dragon);
             }
@@ -189,11 +263,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void removeChipsFromFilteredList(String type) {
 
-        for( int i = filteredChipGroup.getChildCount() - 1 ; i >= 0 ; i-- ){
-            View view = filteredChipGroup.getChildAt(i);
+        for( int i = binding.filteredChipGroup.getChildCount() - 1 ; i >= 0 ; i-- ){
+            View view = binding.filteredChipGroup.getChildAt(i);
             Dragon dragon = (Dragon)view.getTag();
             if( dragon.getType().equals(type) ) {
-                filteredChipGroup.removeView(view);
+                binding.filteredChipGroup.removeView(view);
                 listOfFilteredDragons.remove(dragon);
             }
 
@@ -237,12 +311,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addChipsProgrammaticallyToCheckChipsList() {
-        chipGroup1 = findViewById(R.id.checked_chip_group);
-        //when the switch is on everytime you check a chip, it will display a message.
-//        messageSwitch = findViewById(R.id.messageSwitch);
 
         listOfDragonsToCheck =  populateDragons();
-
 
 
         for (final Dragon dragon : listOfDragonsToCheck){
@@ -250,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
             chip.setText(dragon.getName());
             chip.setTag(dragon.getId());
             chip.setCheckable(true);
-
+            chip.setCheckedIconVisible(true);
 
             chip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -258,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if(isChecked){
                         listOfCheckedDragons.add(dragon);
-                        if(messageSwitch.isChecked()) {
+                        if( binding.showMessageCheckedChipsSwitch.isChecked()) {
                             Snackbar.make(buttonView.getRootView(), dragon.getName() + " : you clicked me!", Snackbar.LENGTH_LONG).show();
                         }
                     }else{
@@ -269,13 +339,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            chipGroup1.addView(chip);
+            binding.checkedChipGroup.addView(chip);
         }
 
     }
 
     private void addChipsProgrammaticallyToRemoveChipsList() {
-        chipGroup2 = findViewById(R.id.remove_chip_group);
 
         listOfDragonsToRemove = populateDragons();
 
@@ -288,40 +357,43 @@ public class MainActivity extends AppCompatActivity {
             chip.setOnCloseIconClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    chipGroup2.removeView(chip);
+                    binding.removeChipGroup.removeView(chip);
                     listOfDragonsToRemove.remove(dragon);
                 }
             });
-            chipGroup2.addView(chip);
+            binding.removeChipGroup.addView(chip);
         }
     }
 
-    public void showSelectedChips(View view) {
-        StringBuilder sb = new StringBuilder();
-        for (final Dragon dragon : listOfCheckedDragons){
+//    public void showSelectedChips(View view) {
+//        StringBuilder sb = new StringBuilder();
+//        for (final Dragon dragon : listOfCheckedDragons){
+//
+//            sb.append(dragon.getName()).append("-").append(dragon.getId()).append(" / ");
+//
+//        }
+//        Toast.makeText(this, "selected dragons: " + sb, Toast.LENGTH_SHORT).show();
+//    }
 
-            sb.append(dragon.getName()).append("-").append(dragon.getId()).append(" / ");
+//    public void showNonRemovedChips(View view) {
+//        StringBuffer sb = new StringBuffer();
+//
+//        for(Dragon dragon : listOfDragonsToRemove){
+//            sb.append(dragon.getName()).append(" ");
+//        }
+//
+//        Snackbar.make(view, sb, Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show();
+//    }
 
-        }
-        Toast.makeText(this, "selected dragons: " + sb, Toast.LENGTH_SHORT).show();
-    }
 
-    public void showNonRemovedChips(View view) {
-        StringBuffer sb = new StringBuffer();
 
-        for(Dragon dragon : listOfDragonsToRemove){
-            sb.append(dragon.getName()).append(" ");
-        }
 
-        Snackbar.make(view, sb, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-    }
-
-    public void restoreRemoveChipList(View view) {
-        chipGroup2.removeAllViews();
-        addChipsProgrammaticallyToRemoveChipsList();
-
-    }
+//    public void restoreRemoveChipList(View view) {
+//        binding.removeChipGroup.removeAllViews();
+//        addChipsProgrammaticallyToRemoveChipsList();
+//
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
