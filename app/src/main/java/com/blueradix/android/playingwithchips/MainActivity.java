@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.blueradix.android.playingwithchips.databinding.ActivityMainBinding;
+import com.blueradix.android.playingwithchips.dragons.Dragon;
+import com.blueradix.android.playingwithchips.dragons.Sign;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,18 +22,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
-    private List<Dragon> listOfDragons;
-    private List<Dragon> listOfDragonsToRemove;
-    private List<Dragon> listOfDragonsToCheck;
-    private List<Dragon> listOfCheckedDragons;
-    private List<String> listOfDragonsFilter;
-    private List<Dragon> listOfFilteredDragons;
 
-    private List<Sign> listOfSigns;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+
+//    private ActivityMainBinding binding;
+//    private List<Dragon> listOfDragons;
+//    private List<Dragon> listOfDragonsToRemove;
+//    private List<Dragon> listOfDragonsToCheck;
+//    private List<Dragon> listOfCheckedDragons;
+//    private List<String> listOfDragonsFilter;
+//    private List<Dragon> listOfFilteredDragons;
+//
+//    private List<Sign> listOfSigns;
 
     //http://www.schoolofdragons.com/how-to-train-your-dragon/screenshots-gallery/dragon-pictures
 
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -208,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void addChipsProgrammaticallyToFilterChipsList() {
+    private void   addChipsProgrammaticallyToFilterChipsList() {
         listOfFilteredDragons = new ArrayList<>();
 
         listOfDragonsFilter = new ArrayList<>();
@@ -287,22 +299,22 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Dragon("Gronckle", 12, "Boulder"));
         list.add(new Dragon("Deadly Nadder", 8, "Sharp"));
 
-        /*
-        list.add(new Dragon("Skrill", 2, "Strike"));
 
-        list.add(new Dragon("Changewing", 4, "Mystery"));
-        list.add(new Dragon("Thunderdrum", 5, "Tidal"));
-        list.add(new Dragon("Scauldron", 6, "Tidal"));
-        list.add(new Dragon("Timberjack", 7, "Sharp"));
+//        list.add(new Dragon("Skrill", 2, "Strike"));
+//
+//        list.add(new Dragon("Changewing", 4, "Mystery"));
+//        list.add(new Dragon("Thunderdrum", 5, "Tidal"));
+//        list.add(new Dragon("Scauldron", 6, "Tidal"));
+//        list.add(new Dragon("Timberjack", 7, "Sharp"));
+//
+//        list.add(new Dragon("Hideous Zippleback", 9, "Fear"));
+//        list.add(new Dragon("Snaptrapper", 10, "Fear"));
+//
+//        list.add(new Dragon("Whispering Death", 13, "Boulder"));
+//
+//        list.add(new Dragon("Terrible Terror", 14, "Stoker"));
+//        list.add(new Dragon("Monstrous Nightmare", 15, "Stoker"));
 
-        list.add(new Dragon("Hideous Zippleback", 9, "Fear"));
-        list.add(new Dragon("Snaptrapper", 10, "Fear"));
-
-        list.add(new Dragon("Whispering Death", 13, "Boulder"));
-
-        list.add(new Dragon("Terrible Terror", 14, "Stoker"));
-        list.add(new Dragon("Monstrous Nightmare", 15, "Stoker"));
-        */
 
         return list;
     }
@@ -384,6 +396,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
 
 }

@@ -1,6 +1,6 @@
-package com.blueradix.android.playingwithchips;
+package com.blueradix.android.playingwithchips.dragons;
 
-class Dragon {
+public class Dragon {
 
     private String name;
     private Integer id;

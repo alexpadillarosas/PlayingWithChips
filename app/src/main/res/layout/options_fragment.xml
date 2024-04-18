@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".chips.OptionsFragment">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:constraint_referenced_ids="entryChipsButton,choiceChipsButton,horizontallyScrollableChipsButton,actionChipsButton,removableChipsButton,checkedChipsButton,filterChipsButton"
+        app:flow_horizontalAlign="start"
+        app:flow_horizontalBias="0"
+        app:flow_maxElementsWrap="3"
+        app:flow_verticalBias="0"
+        app:flow_verticalGap="8dp"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+
+    </androidx.constraintlayout.helper.widget.Flow>
+
+    <Button
+        android:id="@+id/entryChipsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entry" />
+
+    <Button
+        android:id="@+id/choiceChipsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choice" />
+
+    <Button
+        android:id="@+id/horizontallyScrollableChipsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scrollable" />
+
+    <Button
+        android:id="@+id/actionChipsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Action " />
+
+    <Button
+        android:id="@+id/removableChipsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Removable" />
+
+    <Button
+        android:id="@+id/checkedChipsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Checked" />
+
+    <Button
+        android:id="@+id/filterChipsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filtered" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Chips In Action!"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/baseline_cookie_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

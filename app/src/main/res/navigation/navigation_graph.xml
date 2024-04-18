@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/optionsFragment">
+
+    <fragment
+        android:id="@+id/entryChipsFragment"
+        android:name="com.blueradix.android.playingwithchips.chips.EntryChipsFragment"
+        android:label="entry_chips_fragment"
+        tools:layout="@layout/entry_chips_fragment" />
+    <fragment
+        android:id="@+id/choiceChipsFragment"
+        android:name="com.blueradix.android.playingwithchips.chips.ChoiceChipsFragment"
+        android:label="fragment_choice_chips"
+        tools:layout="@layout/choice_chips_fragment" />
+    <fragment
+        android:id="@+id/actionChipsFragment"
+        android:name="com.blueradix.android.playingwithchips.chips.ActionChipsFragment"
+        android:label="action_chips_fragment"
+        tools:layout="@layout/action_chips_fragment" />
+    <fragment
+        android:id="@+id/removeChipsFragment"
+        android:name="com.blueradix.android.playingwithchips.chips.RemoveChipsFragment"
+        android:label="remove_chips_fragment"
+        tools:layout="@layout/remove_chips_fragment" />
+    <fragment
+        android:id="@+id/checkedChipsFragment"
+        android:name="com.blueradix.android.playingwithchips.chips.CheckedChipsFragment"
+        android:label="checked_chips_fragment"
+        tools:layout="@layout/checked_chips_fragment" />
+    <fragment
+        android:id="@+id/filterChipsFragment"
+        android:name="com.blueradix.android.playingwithchips.chips.FilterChipsFragment"
+        android:label="filter_chips_fragment"
+        tools:layout="@layout/filter_chips_fragment" />
+    <fragment
+        android:id="@+id/optionsFragment"
+        android:name="com.blueradix.android.playingwithchips.chips.OptionsFragment"
+        android:label="options_fragment"
+        tools:layout="@layout/options_fragment" >
+        <action
+            android:id="@+id/action_optionsFragment_to_entryChipsFragment"
+            app:destination="@id/entryChipsFragment" />
+        <action
+            android:id="@+id/action_optionsFragment_to_choiceChipsFragment"
+            app:destination="@id/choiceChipsFragment" />
+        <action
+            android:id="@+id/action_optionsFragment_to_horizontallyScrollableChipsFragment"
+            app:destination="@id/horizontallyScrollableChipsFragment" />
+        <action
+            android:id="@+id/action_optionsFragment_to_actionChipsFragment"
+            app:destination="@id/actionChipsFragment" />
+        <action
+            android:id="@+id/action_optionsFragment_to_removeChipsFragment"
+            app:destination="@id/removeChipsFragment" />
+        <action
+            android:id="@+id/action_optionsFragment_to_checkedChipsFragment"
+            app:destination="@id/checkedChipsFragment" />
+        <action
+            android:id="@+id/action_optionsFragment_to_filterChipsFragment"
+            app:destination="@id/filterChipsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/horizontallyScrollableChipsFragment"
+        android:name="com.blueradix.android.playingwithchips.chips.HorizontallyScrollableChipsFragment"
+        android:label="horizontally_scrollable_chips_fragment"
+        tools:layout="@layout/horizontally_scrollable_chips_fragment" />
+</navigation>

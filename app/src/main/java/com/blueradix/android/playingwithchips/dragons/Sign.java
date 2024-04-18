@@ -1,4 +1,4 @@
-package com.blueradix.android.playingwithchips;
+package com.blueradix.android.playingwithchips.dragons;
 
 public class Sign {
     private Long id;

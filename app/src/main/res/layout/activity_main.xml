@@ -1,158 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity" >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="500dp">
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation_graph" />
+</FrameLayout>
+
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+<!--    tools:context=".MainActivity"-->
+<!--    >-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minHeight="500dp">-->
 
 
-        <Button
-            android:id="@+id/showRemovedChipsButton"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
-            android:text="Show Remaining"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/restoreRemovedChipsButton"
-            app:layout_constraintTop_toBottomOf="@+id/remove_chip_group" />
+<!--        <Button-->
+<!--            android:id="@+id/showRemainingChipsButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_marginStart="4dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="Show Remaining"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/restoreRemovedChipsButton"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/removeChipGroup" />-->
 
 
-        <Button
-            android:id="@+id/restoreRemovedChipsButton"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
+<!--        <Button-->
+<!--            android:id="@+id/restoreRemovedChipsButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="48dp"-->
 
-            android:layout_marginEnd="4dp"
-            android:text="Restore Chips"
-            app:layout_constraintEnd_toStartOf="@+id/showRemovedChipsButton"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/showRemovedChipsButton" />
+<!--            android:layout_marginEnd="4dp"-->
+<!--            android:text="Restore Chips"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/showRemainingChipsButton"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/showRemainingChipsButton" />-->
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Entry chips"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="0dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="16dp"
-            android:text="Remove Chips"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/programmed_action_chip_group" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="0dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="16dp"
-            android:text="Checked Chips"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/showRemovedChipsButton" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.97" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.03" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Entry chips"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/entry_chip_group"
+<!--        <TextView-->
+<!--            android:id="@+id/textView2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="19dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Remove Chips"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/programmed_action_chip_group" />-->
 
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/entryChipEditText" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView3"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="19dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Checked Chips"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/showRemainingChipsButton" />-->
+
+<!--        <androidx.constraintlayout.widget.Guideline-->
+<!--            android:id="@+id/guideline2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintGuide_percent="0.97" />-->
+
+<!--        <androidx.constraintlayout.widget.Guideline-->
+<!--            android:id="@+id/guideline"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintGuide_percent="0.03" />-->
 
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/choice_chip_group"
-            android:layout_width="0dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"
-            app:singleSelection="true">
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/entry_chip_group"-->
+
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/entryChipsEditText" />-->
 
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/lecturerChip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="true"
-                android:text="Lecturer"
-                app:checkedIconVisible="true"
-                app:chipMinHeight="48dp"
-                app:chipStrokeColor="@color/md_theme_dark_background"
-                app:chipStrokeWidth="2dp" />
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/choice_chip_group"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="31dp"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView5"-->
+<!--            app:singleSelection="true">-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/tutorChip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="true"
-                android:text="Tutor"
-                app:checkedIconVisible="true"
-                app:chipMinHeight="48dp"
-                app:chipStrokeColor="@color/md_theme_dark_background"
-                app:chipStrokeWidth="2dp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/studentChip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="true"
-                android:text="Student"
-                app:checkedIconVisible="true"
-                app:chipMinHeight="48dp"
-                app:chipStrokeColor="@color/md_theme_dark_background"
-                app:chipStrokeWidth="2dp" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/lecturerChip"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:checkable="true"-->
+<!--                android:text="Lecturer"-->
+<!--                app:checkedIconVisible="true"-->
+<!--                app:chipMinHeight="48dp"-->
+<!--                app:chipStrokeColor="@color/md_theme_dark_background"-->
+<!--                app:chipStrokeWidth="2dp" />-->
 
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/tutorChip"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:checkable="true"-->
+<!--                android:text="Tutor"-->
+<!--                app:checkedIconVisible="true"-->
+<!--                app:chipMinHeight="48dp"-->
+<!--                app:chipStrokeColor="@color/md_theme_dark_background"-->
+<!--                app:chipStrokeWidth="2dp" />-->
+
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/studentChip"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:checkable="true"-->
+<!--                android:text="Student"-->
+<!--                app:checkedIconVisible="true"-->
+<!--                app:chipMinHeight="48dp"-->
+<!--                app:chipStrokeColor="@color/md_theme_dark_background"-->
+<!--                app:chipStrokeWidth="2dp" />-->
+
+
+            <!--Commented out before the whole xml comment-->
             <!--            <com.google.android.material.chip.Chip-->
             <!--                android:id="@+id/chip4"-->
             <!--                style="@style/Widget.Material3.Chip.Assist"-->
@@ -173,247 +192,247 @@
             <!--                app:shapeAppearance="@style/Widget.Material3.Chip.Assist" />-->
 
 
-        </com.google.android.material.chip.ChipGroup>
+<!--        </com.google.android.material.chip.ChipGroup>-->
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/hardcoded_action_chip_group"
-            android:layout_width="0dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="8dp"
-            android:scrollbars="horizontal"
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/hardcoded_action_chip_group"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="31dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:scrollbars="horizontal"-->
 
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:singleLine="true">
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView6"-->
+<!--            app:singleLine="true">-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/rock_chip"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="rock"
-                app:chipIcon="@drawable/ic_rock"
-                app:chipMinHeight="48dp" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/rock_chip"-->
+<!--                style="@style/Widget.MaterialComponents.Chip.Action"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="rock"-->
+<!--                app:chipIcon="@drawable/ic_rock"-->
+<!--                app:chipMinHeight="48dp" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/paper_chip"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="paper"
-                app:chipIcon="@drawable/ic_paper"
-                app:chipMinHeight="48dp" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/paper_chip"-->
+<!--                style="@style/Widget.MaterialComponents.Chip.Action"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="paper"-->
+<!--                app:chipIcon="@drawable/ic_paper"-->
+<!--                app:chipMinHeight="48dp" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/scissor_chip"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="scissors"
-                app:chipIcon="@drawable/ic_scissors"
-                app:chipMinHeight="48dp" />
-
-
-        </com.google.android.material.chip.ChipGroup>
-
-        <HorizontalScrollView
-            android:id="@+id/horizontalScrollView2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:scrollIndicators="start|end"
-            android:scrollbars="none"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/textView7">
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/scissor_chip"-->
+<!--                style="@style/Widget.MaterialComponents.Chip.Action"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="scissors"-->
+<!--                app:chipIcon="@drawable/ic_scissors"-->
+<!--                app:chipMinHeight="48dp" />-->
 
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/horizontal_chip_group"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+<!--        </com.google.android.material.chip.ChipGroup>-->
 
-        </HorizontalScrollView>
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/remove_chip_group"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+<!--        <HorizontalScrollView-->
+<!--            android:id="@+id/horizontalScrollView2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:scrollIndicators="start|end"-->
+<!--            android:scrollbars="none"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView7">-->
 
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/checked_chip_group"
-            style="@style/Widget.Material3.ChipGroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+<!--            <com.google.android.material.chip.ChipGroup-->
+<!--                android:id="@+id/horizontal_chip_group"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent" />-->
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="0dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="16dp"
-            android:text="Filter Chips (Select your dragon's type, no check)"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/showCheckedChipsButton" />
+<!--        </HorizontalScrollView>-->
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/filter_chip_group"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Dragons filtered by type"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/filter_chip_group" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/filtered_chip_group"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Choice Chips (select only one)"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/entry_chip_group" />
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/removeChipGroup"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView2" />-->
 
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Harcoded Action Chips"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/checked_chip_group"-->
+<!--            style="@style/Widget.Material3.ChipGroup"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView3" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView4"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="19dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Filter Chips (Select your dragon's type, no check)"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/showCheckedChipsButton" />-->
+
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/filter_chip_group"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView8"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Dragons filtered by type"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/filter_chip_group" />-->
+
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/filtered_chip_group"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView8" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView5"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Choice Chips (select only one)"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/entry_chip_group" />-->
 
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Programmed Action Chips"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/hardcoded_action_chip_group" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="0dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="16dp"
-            android:text="Horizontally Scrollable Chips (select many)"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/choice_chip_group" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/programmed_action_chip_group"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/textView9">
-
-        </com.google.android.material.chip.ChipGroup>
-
-        <Switch
-            android:id="@+id/showMessageCheckedChipsSwitch"
-            style="@style/Widget.Material3.CompoundButton.Switch"
-            android:layout_width="0dp"
-            android:layout_height="47dp"
-            android:breakStrategy="high_quality"
-            android:gravity="center_horizontal|center_vertical"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:text="Show Msg"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="?android:attr/textColorPrimaryDisableOnly"
-            app:layout_constraintBottom_toBottomOf="@+id/showCheckedChipsButton"
-            app:layout_constraintEnd_toStartOf="@+id/showCheckedChipsButton"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/showCheckedChipsButton" />
-
-        <Button
-            android:id="@+id/showCheckedChipsButton"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:text="Show Checked"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/showMessageCheckedChipsSwitch"
-            app:layout_constraintTop_toBottomOf="@+id/checked_chip_group" />
-
-        <EditText
-            android:id="@+id/entryChipEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:hint="Type words separated by a comma"
-            android:inputType="text"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView6"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Harcoded Action Chips"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />-->
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/textView9"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Programmed Action Chips"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/hardcoded_action_chip_group" />-->
 
-</ScrollView>
+<!--        <TextView-->
+<!--            android:id="@+id/textView7"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="19dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Horizontally Scrollable Chips (select many)"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/choice_chip_group" />-->
+
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/programmed_action_chip_group"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView9">-->
+
+<!--        </com.google.android.material.chip.ChipGroup>-->
+
+<!--        <Switch-->
+<!--            android:id="@+id/showMessageCheckedChipsSwitch"-->
+<!--            style="@style/Widget.Material3.CompoundButton.Switch"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="47dp"-->
+<!--            android:breakStrategy="high_quality"-->
+<!--            android:gravity="center_horizontal|center_vertical"-->
+<!--            android:paddingStart="12dp"-->
+<!--            android:paddingEnd="12dp"-->
+<!--            android:text="Show Msg"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
+<!--            android:textColor="?android:attr/textColorPrimaryDisableOnly"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/showCheckedChipsButton"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/showCheckedChipsButton"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/showCheckedChipsButton" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/showCheckedChipsButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:text="Show Checked"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/showMessageCheckedChipsSwitch"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/checked_chip_group" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/entryChipsEditText"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:ems="10"-->
+<!--            android:hint="Type words separated by a comma"-->
+<!--            android:inputType="text"-->
+<!--            android:minHeight="48dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView" />-->
+
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--</ScrollView>-->

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".chips.ChoiceChipsFragment">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.97" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Choice Chips (select only one)"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/choiceChipsGroup"
+        android:layout_width="0dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:foregroundGravity="center|center_horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:singleSelection="true">
+
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/lecturerChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Lecturer"
+            app:checkedIconVisible="true"
+            app:chipMinHeight="48dp"
+            app:chipStrokeColor="@color/md_theme_dark_background"
+            app:chipStrokeWidth="2dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tutorChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Tutor"
+            app:checkedIconVisible="true"
+            app:chipMinHeight="48dp"
+            app:chipStrokeColor="@color/md_theme_dark_background"
+            app:chipStrokeWidth="2dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/studentChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Student"
+            app:checkedIconVisible="true"
+            app:chipMinHeight="48dp"
+            app:chipStrokeColor="@color/md_theme_dark_background"
+            app:chipStrokeWidth="2dp" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
